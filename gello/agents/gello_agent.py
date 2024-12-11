@@ -61,12 +61,12 @@ PORT_CONFIG_MAP: Dict[str, DynamixelRobotConfig] = {
     # ),
 
     # MATTEO ------------------------
-    # panda from PC
+    # GELLO 1
     "/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT9HD8OD-if00-port0": DynamixelRobotConfig(
         joint_ids=(1, 2, 3, 4, 5, 6, 7),
         joint_offsets=(
             1 * np.pi/2,
-            3 * np.pi/2,
+            2 * np.pi/2,
             3 * np.pi/2,
             1 * np.pi/2,
             3 * np.pi/2,
@@ -74,7 +74,23 @@ PORT_CONFIG_MAP: Dict[str, DynamixelRobotConfig] = {
             1 * np.pi/2,
         ),
         joint_signs=(1, -1, 1, -1, 1, -1, 1),
-        gripper_config=(8, 199, 158),
+        gripper_config=(8, 199, 157),
+    ),
+
+    # GELLO 2
+    "/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT9HDCEF-if00-port0": DynamixelRobotConfig(
+        joint_ids=(11, 12, 13, 14, 15, 16, 17),
+        joint_offsets=(
+            3 * np.pi/2,
+            4 * np.pi/2,
+            2 * np.pi/2,
+            0 * np.pi/2,
+            2 * np.pi/2,
+            1 * np.pi/2,
+            1 * np.pi/2,
+        ),
+        joint_signs=(1, -1, 1, -1, 1, 1, 1),
+        gripper_config=(18, 202, 160),
     ),
     # -------------------------------
     # "/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT3M9NVB-if00-port0": DynamixelRobotConfig(

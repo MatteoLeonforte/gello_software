@@ -15,6 +15,9 @@ class Args:
     port: str = "/dev/ttyUSB0"
     """The port that GELLO is connected to."""
 
+    gello_id: int = 1
+    """The id of the GELLO (1 or 2)."""
+
     start_joints: Tuple[float, ...] = (0, 0, 0, 0, 0, 0)
     """The joint angles that the GELLO is placed in at (in radians)."""
 
@@ -42,7 +45,12 @@ class Args:
 
 
 def get_config(args: Args) -> None:
-    joint_ids = list(range(1, args.num_joints + 1))
+    if args.gello_id == 1:
+        joint_ids = list(range(1, args.num_joints + 1))
+    elif args.gello_id == 2:
+        joint_ids = list(range(11, 11 + args.num_joints))
+    else:
+        raise ValueError(f"Invalid gello_id: {args.gello_id}")
     driver = DynamixelDriver(joint_ids, port=args.port, baudrate=57600)
 
     # assume that the joint state should be args.start_joints
